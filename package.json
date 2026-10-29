@@ -1,0 +1,78 @@
+{
+  "name": "strapi-provider-upload-neon",
+  "version": "1.0.0",
+  "description": "Upload files to Neon Object Storage from Strapi v5 with public and private bucket support",
+  "type": "commonjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "clean": "rm -rf ./dist",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:integration": "dotenvx run -f .env -- vitest run",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "strapi",
+    "strapi-provider",
+    "strapi-plugin",
+    "upload",
+    "neon",
+    "neon-object-storage",
+    "storage",
+    "s3",
+    "strapi5",
+    "file-upload",
+    "cloud-storage"
+  ],
+  "strapi": {
+    "kind": "provider",
+    "name": "upload-neon",
+    "displayName": "Neon Object Storage",
+    "description": "Upload files to Neon Object Storage with support for public and private buckets"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=6.0.0"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1159.0",
+    "@aws-sdk/lib-storage": "^3.1159.0",
+    "@aws-sdk/s3-request-presigner": "^3.1159.0"
+  },
+  "peerDependencies": {
+    "@strapi/strapi": "^5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@strapi/strapi": {
+      "optional": true
+    }
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@dotenvx/dotenvx": "^2.38.2",
+    "@types/node": "^26.6.6",
+    "tsdown": "^0.23.3",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  },
+  "author": "Rishi Raj Jain <jain71000@gmail.com>"
+}
